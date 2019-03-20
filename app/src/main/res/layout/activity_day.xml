@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="day"
+            type="jakeybakes.com.weather.weather.Day" />
+
+        <variable
+            name="location"
+            type="String" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_colour"
+        tools:context="jakeybakes.com.weather.ui.DayActivity">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineDay20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineDay50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineDay80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.80" />
+
+        <TextView
+            android:id="@+id/txtv_hour_date"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@{day.fullDate}"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Saturday 3rd March 2019" />
+
+        <TextView
+            android:id="@+id/txtv_hour_location"
+            style="@style/windString"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@{location}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_date"
+            tools:text="My Location" />
+
+        <ImageView
+            android:id="@+id/imgv_hour_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/daily_weather_icon"
+            app:imageResource="@{day.iconId}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_location"
+            app:srcCompat="@drawable/cloudy_night" />
+
+        <TextView
+            android:id="@+id/txtv_day_summary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@{day.summary}"
+            style="@style/windString"
+            app:layout_constraintBottom_toBottomOf="@+id/imgv_hour_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgv_hour_icon"
+            app:layout_constraintTop_toTopOf="@+id/imgv_hour_icon"
+            tools:text="Mainly cloudy with inevitable rain later" />
+
+        <TextView
+            android:id="@+id/txtv_hour_temp_label"
+            style="@style/dataHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/high_temp"
+            android:onClick="toastDefinition"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay20"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay20"
+            app:layout_constraintTop_toBottomOf="@+id/imgv_hour_icon" />
+
+        <TextView
+            android:id="@+id/txtv_hour_temp_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{String.valueOf(Math.round(day.temperatureHigh)) + `°`}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_hour_temp_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_hour_temp_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_temp_label"
+            tools:text="18" />
+
+        <TextView
+            android:id="@+id/txtv_hour_cloudCover_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/cloud_cover"
+            android:onClick="toastDefinition"
+            style="@style/dataHeading"
+            app:layout_constraintBottom_toBottomOf="@+id/txtv_hour_precipitation_label"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay80"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay80"
+            app:layout_constraintTop_toTopOf="@+id/txtv_hour_precipitation_label" />
+
+        <TextView
+            android:id="@+id/txtv_day_cloudCover_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@{String.valueOf(Math.round(day.cloudCover * 100)) + `%`}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_hour_cloudCover_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_hour_cloudCover_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_cloudCover_label"
+            tools:text="89%" />
+
+        <TextView
+            android:id="@+id/txtv_hour_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:text="@{`Wind: ` + String.valueOf(Math.round(day.windSpeed)) + ` mph from ` + day.windDirection + ` (gusts ` + String.valueOf(Math.round(day.windGust)) + ` mph)`}"
+            style="@style/windString"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_temp_value"
+            tools:text="Wind: 24mph from WSW (gusts 34mph)" />
+
+        <TextView
+            android:id="@+id/txtv_hour_precipitation_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/precipitation"
+            android:onClick="toastDefinition"
+            style="@style/dataHeading"
+            app:layout_constraintBottom_toBottomOf="@+id/txtv_hour_temp_label"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintTop_toTopOf="@+id/txtv_hour_temp_label" />
+
+        <TextView
+            android:id="@+id/txtv_day_precipitation_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{String.valueOf(Math.round(day.precipProbability * 100)) + `%`}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_hour_precipitation_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_hour_precipitation_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_precipitation_label"
+            tools:text="89%" />
+
+        <TextView
+            android:id="@+id/txtv_hour_dewPoint_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/dew_point"
+            android:onClick="toastDefinition"
+            style="@style/dataHeading"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay20"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay20"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_wind" />
+
+        <TextView
+            android:id="@+id/txtv_hour_dewPoint_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{String.valueOf(Math.round(day.dewPoint)) + `°`}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_hour_dewPoint_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_hour_dewPoint_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_dewPoint_label"
+            tools:text="9.13" />
+
+        <TextView
+            android:id="@+id/txtv_hour_humidity_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/humidity"
+            android:onClick="toastDefinition"
+            style="@style/dataHeading"
+            app:layout_constraintBottom_toBottomOf="@+id/txtv_hour_dewPoint_label"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintTop_toTopOf="@+id/txtv_hour_dewPoint_label" />
+
+        <TextView
+            android:id="@+id/txtv_day_humidity_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{String.valueOf(day.humidity)}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_hour_humidity_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_hour_humidity_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_humidity_label"
+            tools:text="0.89" />
+
+        <TextView
+            android:id="@+id/txtv_hour_pressure_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pressure"
+            android:onClick="toastDefinition"
+            style="@style/dataHeading"
+            app:layout_constraintBottom_toBottomOf="@+id/txtv_hour_humidity_label"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay80"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay80"
+            app:layout_constraintTop_toTopOf="@+id/txtv_hour_humidity_label" />
+
+        <TextView
+            android:id="@+id/txtv_day_pressure_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{String.valueOf(Math.round(day.pressure)) + ` mb`}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_hour_pressure_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_hour_pressure_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_pressure_label"
+            tools:text=" 1010 mb" />
+
+        <TextView
+            android:id="@+id/txtv_hour_uvIndex_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/uv_index"
+            android:onClick="toastDefinition"
+            style="@style/dataHeading"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay20"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay20"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_dewPoint_value" />
+
+        <TextView
+            android:id="@+id/txtv_hour_uvIndex_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{String.valueOf(day.uvIndex)}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_hour_uvIndex_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_hour_uvIndex_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_uvIndex_label"
+            tools:text="2" />
+
+        <TextView
+            android:id="@+id/txtv_hour_visibility_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/visibility"
+            android:onClick="toastDefinition"
+            style="@style/dataHeading"
+            app:layout_constraintBottom_toBottomOf="@+id/txtv_hour_uvIndex_label"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintTop_toTopOf="@+id/txtv_hour_uvIndex_label" />
+
+        <TextView
+            android:id="@+id/txtv_day_visibility_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{String.valueOf(day.visibility) + ` m`}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_hour_visibility_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_hour_visibility_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_visibility_label"
+            tools:text="5.13 miles" />
+
+        <TextView
+            android:id="@+id/txtv_hour_ozone_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/ozone"
+            android:onClick="toastDefinition"
+            style="@style/dataHeading"
+            app:layout_constraintBottom_toBottomOf="@+id/txtv_hour_visibility_label"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay80"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay80"
+            app:layout_constraintTop_toTopOf="@+id/txtv_hour_visibility_label" />
+
+        <TextView
+            android:id="@+id/txtv_day_ozone_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{String.valueOf(Math.round(day.ozone)) + ` du`}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_hour_ozone_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_hour_ozone_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_ozone_label"
+            tools:text="350 du" />
+
+        <TextView
+            android:id="@+id/txtv_day_sunrise_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/sunrise"
+            android:onClick="toastDefinition"
+            style="@style/dataHeading"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay20"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay20"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hour_uvIndex_value" />
+
+        <TextView
+            android:id="@+id/txtv_day_sunrise_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{day.sunriseTime}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_day_sunrise_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_day_sunrise_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_day_sunrise_label"
+            tools:text="4:15 am" />
+
+        <TextView
+            android:id="@+id/txtv_day_sunset_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/sunset"
+            android:onClick="toastDefinition"
+            style="@style/dataHeading"
+            app:layout_constraintBottom_toBottomOf="@+id/txtv_day_sunrise_label"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay50"
+            app:layout_constraintTop_toTopOf="@+id/txtv_day_sunrise_label" />
+
+        <TextView
+            android:id="@+id/txtv_day_sunset_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{day.sunsetTime}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_day_sunset_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_day_sunset_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_day_sunset_label"
+            tools:text="6:15 pm" />
+
+        <TextView
+            android:id="@+id/txtv_day_monnPhase_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/moon_phase"
+            android:onClick="toastDefinition"
+            style="@style/dataHeading"
+            app:layout_constraintBottom_toBottomOf="@+id/txtv_day_sunset_label"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineDay80"
+            app:layout_constraintStart_toStartOf="@+id/guidelineDay80"
+            app:layout_constraintTop_toTopOf="@+id/txtv_day_sunset_label" />
+
+        <TextView
+            android:id="@+id/txtv_day_monnPhase_value"
+            style="@style/dataValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{String.valueOf(day.moonPhase)}"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_day_monnPhase_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_day_monnPhase_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_day_monnPhase_label"
+            tools:text="0.85" />
+
+        <Button
+            android:id="@+id/btn_day_backToDays"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/back_button"
+            android:onClick="fromDayToDailyOnClick"
+            style="@style/optionButtons"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

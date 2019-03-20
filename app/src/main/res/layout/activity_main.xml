@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="current"
+            type="jakeybakes.com.weather.weather.CurrentWeather"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/conLay_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_colour"
+        tools:context="jakeybakes.com.weather.ui.MainActivity">
+
+        <TextView
+            android:id="@+id/temperature_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(Math.round(current.temperature)), default = `88`}"
+            android:textColor="@android:color/white"
+            android:textSize="80sp"
+            app:layout_constraintBottom_toTopOf="@+id/txtv_summary"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintHorizontal_bias="0.289"
+            app:layout_constraintStart_toStartOf="@+id/guideline4" />
+
+        <ImageView
+            android:id="@+id/imgv_degree"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/degreesymbol"
+            app:layout_constraintStart_toEndOf="@+id/temperature_value"
+            app:layout_constraintTop_toTopOf="@+id/temperature_value"
+            app:srcCompat="@drawable/degree" />
+
+        <TextView
+            android:id="@+id/txtv_timeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@{`At ` + String.valueOf(current.formattedTime) + ` it will be...`, default = `At 5:00pm it will be...`}"
+            android:textColor="@color/half_white"
+            android:textSize="18sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/temperature_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@{current.locationLabel}"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/txtv_timeholder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="My Location" />
+
+        <ImageView
+            android:id="@+id/imgv_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/weather_type_icon"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toTopOf="@+id/temperature_value"
+            app:srcCompat="@drawable/cloudy_night" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.33" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.50" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.67" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.20" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.80" />
+
+        <TextView
+            android:id="@+id/txtv_humidity_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/humidity"
+            android:onClick="definitionOnClick"
+            style="@style/dataHeading"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+        <TextView
+            android:id="@+id/txtv_humidity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(current.humidity), default = `0.5`}"
+            style="@style/dataValue"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_humidity_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_humidity_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_humidity_label" />
+
+        <TextView
+            android:id="@+id/txtv_precip_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/precipitation"
+            android:onClick="definitionOnClick"
+            style="@style/dataHeading"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+        <TextView
+            android:id="@+id/txtv_precip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(Math.round(current.precipChance * 100)) + `%`, default = `50 %`}"
+            style="@style/dataValue"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_precip_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_precip_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_precip_label" />
+
+        <TextView
+            android:id="@+id/txtv_pressure_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/pressure"
+            android:onClick="definitionOnClick"
+            style="@style/dataHeading"
+            app:layout_constraintEnd_toStartOf="@+id/guideline9"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+        <TextView
+            android:id="@+id/txtv_pressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@{String.valueOf(Math.round(current.pressure) + ` mb`), default = `1004 mb`}"
+            style="@style/dataValue"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_pressure_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_pressure_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_pressure_label" />
+
+
+        <TextView
+            android:id="@+id/txtv_windDetails"
+            style="@style/windString"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="@{current.windSummary, default = `Wind: 50mph from SSW (Gusts up to 60mph)`}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.545"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_cloudCover" />
+
+        <TextView
+            android:id="@+id/txtv_summary"
+            style="@style/dataString"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@{current.summary, default = `Stormy with a chance of pasties`}"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/guideline7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.601"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtv_attribution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/dark_sky_message"
+            android:textColor="@color/half_white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgv_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/refresh"
+            android:onClick="refreshOnClick"
+            app:layout_constraintBottom_toTopOf="@+id/txtv_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/refresh" />
+
+        <Button
+            android:id="@+id/btn_seeForecast"
+            style="@style/optionButtons"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:onClick="hourlyOnClick"
+            android:text="@string/hourly_forecast"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_uvIndex" />
+
+        <Button
+            android:id="@+id/btn_dailyForecast"
+            style="@style/optionButtons"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="dailyOnClick"
+            android:text="@string/daily_forecast"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toTopOf="@+id/btn_seeForecast" />
+
+        <Button
+            android:id="@+id/btn_location"
+            style="@style/optionButtons"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/location"
+            android:onClick="locationOnClick"
+            app:layout_constraintBottom_toTopOf="@+id/txtv_attribution"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_seeForecast" />
+
+        <TextView
+            android:id="@+id/txtv_dewpoint_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/dew_point"
+            android:onClick="definitionOnClick"
+            style="@style/dataHeading"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_humidity" />
+
+        <TextView
+            android:id="@+id/txtv_dewPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(current.dewPoint) + `°`, default = `33.3°`}"
+            style="@style/dataValue"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_dewpoint_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_dewpoint_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_dewpoint_label" />
+
+        <TextView
+            android:id="@+id/txtv_cloudCover_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/cloud_cover"
+            android:onClick="definitionOnClick"
+            style="@style/dataHeading"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_precip" />
+
+        <TextView
+            android:id="@+id/txtv_cloudCover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(Math.round(current.cloudCover) * 100) + ` %`, default = `80 %`}"
+            style="@style/dataValue"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_cloudCover_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_cloudCover_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_cloudCover_label" />
+
+        <TextView
+            android:id="@+id/txtv_uvIndex_label"
+            style="@style/dataHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/uv_index"
+            android:onClick="definitionOnClick"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_windDetails" />
+
+        <TextView
+            android:id="@+id/txtv_uvIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(current.uvIndex), default = `2`}"
+            style="@style/dataValue"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_uvIndex_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_uvIndex_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_uvIndex_label" />
+
+        <TextView
+            android:id="@+id/txtv_visibility_label"
+            style="@style/dataHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/visibility"
+            android:onClick="definitionOnClick"
+            app:layout_constraintEnd_toStartOf="@+id/guideline6"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_windDetails" />
+
+        <TextView
+            android:id="@+id/txtv_visibility"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(current.visibility) + ` miles`, default = `5 miles`}"
+            style="@style/dataValue"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_visibility_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_visibility_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_visibility_label" />
+
+        <TextView
+            android:id="@+id/txtv_ozone_label"
+            style="@style/dataHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/ozone"
+            android:onClick="definitionOnClick"
+            app:layout_constraintEnd_toStartOf="@+id/guideline9"
+            app:layout_constraintStart_toStartOf="@+id/guideline9"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_windDetails" />
+
+        <TextView
+            android:id="@+id/txtv_ozone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(Math.round(current.ozone)) + ` du`, default = `260 du`}"
+            style="@style/dataValue"
+            app:layout_constraintEnd_toEndOf="@+id/txtv_ozone_label"
+            app:layout_constraintStart_toStartOf="@+id/txtv_ozone_label"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_ozone_label" />
+
+        <TextView
+            android:id="@+id/txtv_main_fetchingDataMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Fetching current weather details..."
+            android:textColor="@color/half_white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/temperature_value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_location" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

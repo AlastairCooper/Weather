@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.SaveLocationActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdln_savLoc_35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <TextView
+        android:id="@+id/txtv_savLoc_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/save_location"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtv_savLoc_latitudeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/latitude"
+        style="@style/savLoc_details"
+        app:layout_constraintBottom_toBottomOf="@+id/txtv_savLoc_latitude"
+        app:layout_constraintEnd_toStartOf="@+id/gdln_savLoc_35"
+        app:layout_constraintTop_toTopOf="@+id/txtv_savLoc_latitude" />
+
+    <TextView
+        android:id="@+id/txtv_savLoc_latitude"
+        style="@style/savLoc_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/gdln_savLoc_35"
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        tools:text="t8557sshe4y" />
+
+    <TextView
+        android:id="@+id/txtv_savLoc_longitudeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/longitude"
+        style="@style/savLoc_details"
+        app:layout_constraintBottom_toBottomOf="@+id/txtv_savLoc_longitude"
+        app:layout_constraintEnd_toStartOf="@+id/gdln_savLoc_35"
+        app:layout_constraintTop_toTopOf="@+id/txtv_savLoc_longitude" />
+
+    <TextView
+        android:id="@+id/txtv_savLoc_longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        style="@style/savLoc_details"
+        app:layout_constraintStart_toStartOf="@+id/gdln_savLoc_35"
+        app:layout_constraintTop_toBottomOf="@+id/txtv_savLoc_latitude"
+        tools:text="fhhg774nduhciuewh" />
+
+    <TextView
+        android:id="@+id/txtv_savLoc_locationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="@string/savloc_location"
+        style="@style/savLoc_details"
+        app:layout_constraintBottom_toBottomOf="@+id/txtv_savLoc_location"
+        app:layout_constraintEnd_toStartOf="@+id/gdln_savLoc_35"
+        app:layout_constraintTop_toTopOf="@+id/txtv_savLoc_location" />
+
+    <TextView
+        android:id="@+id/txtv_savLoc_location"
+        style="@style/savLoc_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/gdln_savLoc_35"
+        app:layout_constraintTop_toBottomOf="@+id/txtv_savLoc_longitude"
+        tools:text="Half way up Ayers rock" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:text="Location Details"
+        android:textColor="@color/half_white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtv_savLoc_title" />
+
+    <TextView
+        android:id="@+id/txtv_savLoc_saveInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:lineSpacingExtra="8sp"
+        android:text="Select a name for this location\n(ie Home, Nan's house, etc)"
+        android:textAlignment="center"
+        android:textColor="@color/half_white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtv_savLoc_location" />
+
+    <TextView
+        android:id="@+id/txtv_savLoc_saveAsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Save as:"
+        android:textColor="@color/half_white"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edtx_savLoc_locationNameToSave"
+        app:layout_constraintEnd_toStartOf="@+id/gdln_savLoc_35" />
+
+    <EditText
+        android:id="@+id/edtx_savLoc_locationNameToSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="@+id/gdln_savLoc_35"
+        app:layout_constraintTop_toBottomOf="@+id/txtv_savLoc_saveInstructions"
+        tools:text="Half way up Ayers Rock" />
+
+    <Button
+        android:id="@+id/btn_savLoc_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="SAVE TO  MY LOCATIONS"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtx_savLoc_locationNameToSave" />
+
+    <Button
+        android:id="@+id/btn_savLoc_BackToMap"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/don_t_save_back_to_map"
+        style="@style/optionButtons"
+        app:layout_constraintBottom_toTopOf="@+id/btn_savLoc_myLocations"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_savLoc_myLocations"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/savloc_my_locations"
+        style="@style/optionButtons"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

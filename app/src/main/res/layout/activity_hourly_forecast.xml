@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="hour"
+            type="jakeybakes.com.weather.weather.Hour"/>
+        <variable
+            name="pageSummary"
+            type="String"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/hourlyForecastLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_colour"
+        tools:context="jakeybakes.com.weather.ui.HourlyForecastActivity">
+
+        <TextView
+            android:id="@+id/txtv_hourlySummary"
+            style="@style/dataValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:paddingStart="15dp"
+            android:paddingLeft="15dp"
+            android:paddingEnd="15dp"
+            android:paddingRight="15dp"
+            android:text="@{pageSummary}"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Summary text" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/hourlyForecastTitles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtv_hourlySummary">
+
+            <TextView
+                android:id="@+id/txtv_dy_dayOfWeek_hour"
+                style="@style/dataHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/day_time"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/guidelineVert17_dailyTitles_hour"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVert17_dailyTitles_hour"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtv_dy_windSpeed_hour"
+                style="@style/dataHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/summary"
+                app:layout_constraintBottom_toBottomOf="@+id/txtv_dy_dayOfWeek_hour"
+                app:layout_constraintStart_toStartOf="@+id/guidelineVert50_dailyTitles_hour"
+                app:layout_constraintTop_toTopOf="@+id/txtv_dy_dayOfWeek_hour" />
+
+            <TextView
+                android:id="@+id/txtv_precipitation_hour"
+                style="@style/dataHeading"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/tempTitle"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/txtv_dy_windSpeed_hour"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtv_dy_windSpeed_hour" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guidelineVert17_dailyTitles_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.12911393" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guidelineVert50_dailyTitles_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.47" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guidelineVert67_dailyTitles_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.68" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guidelineVert83_dailyTitles_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.82" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/hourlyListView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_graphs_hourly"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hourlyForecastTitles" />
+
+
+        <Button
+            android:id="@+id/btn_graphs_hourly"
+            style="@style/optionButtons"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="fromHourlyToHourlyGraphs"
+            android:text="@string/hourly_data_in_graphs"
+            app:layout_constraintBottom_toTopOf="@id/hourlyForecast_BtnBack"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/hourlyForecast_BtnBack"
+            style="@style/optionButtons"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="fromHourlyToMainOnClick"
+            android:text="@string/back_button"
+            app:layout_constraintBottom_toTopOf="@id/txtv_hourlyForecast_attribution"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtv_hourlyForecast_attribution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/dark_sky_message"
+            android:textColor="@color/half_white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

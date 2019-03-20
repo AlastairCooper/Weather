@@ -1,0 +1,92 @@
+<resources>
+    <string name="app_name">Weather</string>
+    <string name="dialog_error_title">Oops! Sorry</string>
+    <string name="dialog_error_text">There was an error. Please Try again</string>
+    <string name="dialog_error_button_text">OK</string>
+    <string name="reawla">Reawla</string>
+    <string name="dark_sky_message"><a href="https://darksky.net/poweredby">Powered by Dark Sky</a></string>
+    <string name="precipitation">Precipitation</string>
+    <string name="humidity">Humidity</string>
+    <string name="degreesymbol">degreeSymbol</string>
+    <string name="refresh">Refresh Button</string>
+    <string name="weather_type_icon">Weather type icon</string>
+    <string name="hourly_forecast">HOURLY FORECAST</string>
+    <string name="daily_forecast">DAILY FORECAST</string>
+    <string name="location">CHANGE LOCATION</string>
+    <string name="pressure">Pressure</string>
+    <string name="dew_point">Dew Point</string>
+    <string name="cloud_cover">Cloud Cover</string>
+    <string name="uv_index">UV Index</string>
+    <string name="visibility">Visibility</string>
+    <string name="title_activity_hourly_forecast">HourlyForecastActivity</string>
+    <string name="weather_icon">weather icon</string>
+    <string name="back_button">BACK</string>
+    <string name="ozone">Ozone</string>
+    <string name="more">MORE</string>
+    <string name="daily_weather_icon">Daily weather icon</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+    <string name="moon_phase">Moon Phase</string>
+    <string name="high_temp">High Temp</string>
+    <string name="temperature">Temperature</string>
+    <string name="day">Day</string>
+    <string name="tempTitle">Temp</string>
+    <string name="wind">Wind</string>
+    <string name="precip">Precip</string>
+    <string name="summary">Summary</string>
+    <string name="day_time">Day/Time</string>
+    <string name="splash_icon">splash_icon</string>
+    <string name="daily_data_in_graphs">DAILY FORECAST IN GRAPHS</string>
+    <string name="hourly_data_in_graphs">HOURLY FORECAST IN GRAPHS</string>
+    <string name="high_temperature">High Temperature</string>
+    <string name="see_hourly_graphs">SEE NEXT 48 HOURS</string>
+    <string name="see_daily_graphs">SEE NEXT 7 DAYS</string>
+    <string name="chance_of_precipitation">Chance of Precipitation</string>
+    <string name="select_the_data_to_show_in_the_graph">Select the data to show in the graph</string>
+    <string name="title_activity_graphs">GraphsActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="save_to_my_locations">SAVE TO MY LOCATIONS</string>
+    <string name="my_locations">MY LOCATIONS</string>
+    <string name="save_location">Save Location</string>
+    <string name="latitude">Latitude:</string>
+    <string name="longitude">Longitude:</string>
+    <string name="savloc_location">Location:</string>
+    <string name="savloc_my_locations">MY LOCATIONS</string>
+    <string name="don_t_save_back_to_map">DON\'T SAVE - BACK TO MAP</string>
+    <string name="select_location_from_map">SELECT LOCATION FROM MAP</string>
+    <string name="back_to_current">BACK TO CURRENT LOCATION</string>
+    <string name="myloc_my_locations">My Locations</string>
+    <string name="tap_the_location_you_want_weather_for">Tap the location you want weather for</string>
+    <string name="lat">Lat:</string>
+    <string name="lon">Long:</string>
+    <string name="no_locations_saved">You have no locations saved.</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
+    <string name="get_weather">Get Weather</string>
+    <string name="save">Save</string>
+    <string name="edit_name_for_this_location">Edit name for this location</string>
+    <string name="home_hint">Home</string>
+    <string-array name="daily_graph_options">
+        <item>High Temperature</item>
+        <item>Chance of Precipitation</item>
+        <item>Air Pressure</item>
+        <item>Humidity</item>
+        <item>Cloud Cover</item>
+        <item>Wind Speed</item>
+        <item>Ozone Level</item>
+        <item>UV Index</item>
+        <item>Visibility</item>
+    </string-array>
+    <string-array name="hourly_graph_options">
+        <item>Temperature</item>
+        <item>Chance of Precipitation</item>
+        <item>Air Pressure</item>
+        <item>Humidity</item>
+        <item>Cloud Cover</item>
+        <item>Wind Speed</item>
+        <item>Ozone Level</item>
+        <item>UV Index</item>
+        <item>Visibility</item>
+    </string-array>
+</resources>

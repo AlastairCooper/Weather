@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#BBBBBBBB</color>
+    <color name="background_colour">#0073d2</color>
+    <color name="half_white">#80FFFFFF</color>
+    <color name="button_background">#80FFFFFF</color>
+    <color name="button_background_disabled">#22FFFFFF</color>
+    <color name="chart_background">#1083e2</color>
+    <color name="pressed_color">#1083e2</color>
+    <color name="selected_color">#303F9F</color>
+    <color name="window_focused_color">#1083e2</color>
+</resources>

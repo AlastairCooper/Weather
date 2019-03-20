@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.LocationActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gdln_loc_40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.40" />
+
+
+    <TextView
+        android:id="@+id/txtv_loc_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Get the weather forecast for..."
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtv_loc_instructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Tap the map to select a location"
+        android:textColor="@color/half_white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtv_loc_title" />
+
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapv_loc_map"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtv_loc_latitudeTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtv_loc_instructions" />
+
+    <TextView
+        android:id="@+id/txtv_loc_latitudeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Latitude:"
+        style="@style/locationValueTitles"
+        app:layout_constraintBottom_toTopOf="@+id/txtv_loc_longitudeTitle"
+        app:layout_constraintEnd_toStartOf="@+id/gdln_loc_40" />
+
+    <TextView
+        android:id="@+id/txtv_loc_latitude"
+        style="@style/locationValueValues"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtv_loc_latitudeTitle"
+        app:layout_constraintStart_toStartOf="@+id/gdln_loc_40"
+        app:layout_constraintTop_toTopOf="@+id/txtv_loc_latitudeTitle"
+        tools:text="51.3555867" />
+
+    <TextView
+        android:id="@+id/txtv_loc_longitudeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Longitude:"
+        style="@style/locationValueTitles"
+        app:layout_constraintBottom_toTopOf="@+id/txtv_loc_locationTitle"
+        app:layout_constraintEnd_toStartOf="@+id/gdln_loc_40" />
+
+    <TextView
+        android:id="@+id/txtv_loc_longitude"
+        style="@style/locationValueValues"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtv_loc_longitudeTitle"
+        app:layout_constraintStart_toStartOf="@+id/gdln_loc_40"
+        app:layout_constraintTop_toTopOf="@+id/txtv_loc_longitudeTitle"
+        tools:text="-1.3774975" />
+
+    <TextView
+        android:id="@+id/txtv_loc_locationTitle"
+        style="@style/locationValueTitles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Location:"
+        app:layout_constraintBottom_toTopOf="@id/btn_saveLocationToPreferences"
+        app:layout_constraintEnd_toStartOf="@id/gdln_loc_40" />
+
+    <TextView
+        android:id="@+id/txtv_loc_location"
+        style="@style/locationValueValues"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtv_loc_locationTitle"
+        app:layout_constraintStart_toStartOf="@+id/gdln_loc_40"
+        app:layout_constraintTop_toTopOf="@+id/txtv_loc_locationTitle"
+        tools:text="Newcastle-upon-Tyne" />
+
+    <Button
+        android:id="@+id/btn_loadMyLocations"
+        style="@style/optionButtons"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="loadMyLocationsOnClick"
+        android:text="@string/my_locations"
+        app:layout_constraintBottom_toTopOf="@id/btn_showMeTheWeather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_saveLocationToPreferences"
+        style="@style/optionButtons"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/save_to_my_locations"
+        app:layout_constraintBottom_toTopOf="@id/btn_showMeTheWeather"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_showMeTheWeather"
+        style="@style/optionButtons"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="SHOW ME THE WEATHER"
+        android:onClick="showMeTheWeatherOnClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

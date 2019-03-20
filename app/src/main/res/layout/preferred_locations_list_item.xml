@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="prefLocation"
+            type="jakeybakes.com.weather.location.PrefLocation" />
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:tag="@{prefLocation}"
+        android:onClick="preferredLocationOnClick">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/gdln_myLoc_horiz50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.50" />
+
+        <TextView
+            android:id="@+id/txtv_myLoc_recy_location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@android:color/white"
+            android:text="@{prefLocation.location}"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/gdln_myLoc_horiz50"
+            app:layout_constraintEnd_toStartOf="@+id/txtv_myLoc_recy_longTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gdln_myLoc_horiz50"
+            tools:text="My Location" />
+
+        <TextView
+            android:id="@+id/txtv_myLoc_recy_lat"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="2dp"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:text="@{prefLocation.latString}"
+            app:layout_constraintBottom_toTopOf="@+id/gdln_myLoc_horiz50"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="51.66734" />
+
+        <TextView
+            android:id="@+id/txtv_myLoc_recy_latTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/lat"
+            android:textColor="@color/half_white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtv_myLoc_recy_lat"
+            app:layout_constraintEnd_toStartOf="@+id/txtv_myLoc_recy_lat"
+            app:layout_constraintTop_toTopOf="@+id/txtv_myLoc_recy_lat" />
+
+        <TextView
+            android:id="@+id/txtv_myLoc_recy_long"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:text="@{prefLocation.longString}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gdln_myLoc_horiz50"
+            tools:text="-5.22876" />
+
+        <TextView
+            android:id="@+id/txtv_myLoc_recy_longTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/lon"
+            android:textColor="@color/half_white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtv_myLoc_recy_long"
+            app:layout_constraintEnd_toStartOf="@+id/txtv_myLoc_recy_long"
+            app:layout_constraintTop_toTopOf="@+id/txtv_myLoc_recy_long" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

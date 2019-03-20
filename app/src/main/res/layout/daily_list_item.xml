@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="day"
+            type="jakeybakes.com.weather.weather.Day"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/chart_background"
+        android:onClick="dailyMoreDetailsOnClick"
+        android:tag="@{day}">
+
+        <TextView
+            android:id="@+id/txtv_dy_dayOfWeek"
+            style="@style/dailyTextViews"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:text="@{day.dayOfWeek}"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVert17"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            tools:text="Tues" />
+
+        <ImageView
+            android:id="@+id/imgv_dy_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/daily_weather_icon"
+            app:imageResource="@{day.iconId}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVert33"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVert17"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:layout_constraintVertical_bias="0.583"
+            app:srcCompat="@drawable/partly_cloudy" />
+
+        <TextView
+            android:id="@+id/txtv_dy_temperature"
+            style="@style/dailyTextViews"
+            android:layout_width="28dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAlignment="center"
+            android:text="@{String.valueOf(Math.round(day.temperatureHigh)) + `°`}"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVert33"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            tools:text="15" />
+
+        <TextView
+            android:id="@+id/txtv_dy_windSpeed"
+            style="@style/dailyTextViews"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{String.valueOf(Math.round(day.windSpeed)) + `mph`}"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toStartOf="@+id/guidelineVert67"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            tools:text="35mph" />
+
+        <TextView
+            android:id="@+id/txtv_windDirection"
+            style="@style/dailyTextViews"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{day.windDirection}"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVert67"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            tools:text="SW" />
+
+        <TextView
+            android:id="@+id/txtv_precipitation"
+            style="@style/dailyTextViews"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{String.valueOf(Math.round(day.precipProbability * 100)) + `%`}"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guidelineVert83"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            tools:text="100%" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="30dp" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineVert17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.13" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineVert33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.34" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineVert50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.47" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineVert67"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.68" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guidelineVert83"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.82" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

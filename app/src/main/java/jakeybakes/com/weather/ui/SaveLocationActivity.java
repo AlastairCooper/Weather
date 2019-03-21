@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import jakeybakes.com.weather.R;
 
@@ -66,11 +67,24 @@ public class SaveLocationActivity extends AppCompatActivity {
     }
 
     public void saveToSharedPreferences(){
-        String saveValue = latChosen + "_" + longChosen + "_" + locChosen;
-        String existingString = mSharedPreferences.getString(LocationActivity.KEY_SAVED_LOCATIONS,"");
-        mEditor.putString(LocationActivity.KEY_SAVED_LOCATIONS, existingString + "#" + saveValue);
-        mEditor.apply();
-        goBackToMapOnClick();
+        EditText edt = findViewById(R.id.edtx_savLoc_locationNameToSave);
+        String locSaveName = edt.getText().toString();
+        if(locSaveName.contains("#") || locSaveName.contains("_")){
+            Toast.makeText(this, "Names cannot include '#' or '_' characters",Toast.LENGTH_LONG).show();
+        } else {
+            if (locSaveName.equals("")) {
+                locSaveName = locChosen;
+            }
+            String saveValue = latChosen + "_" + longChosen + "_" + locSaveName;
+            String existingString = mSharedPreferences.getString(LocationActivity.KEY_SAVED_LOCATIONS, "");
+            if (existingString.equals("")) {
+                mEditor.putString(LocationActivity.KEY_SAVED_LOCATIONS, saveValue);
+            } else {
+                mEditor.putString(LocationActivity.KEY_SAVED_LOCATIONS, existingString + "#" + saveValue);
+            }
+            mEditor.apply();
+            goBackToMapOnClick();
+        }
     }
 
     private void goBackToMapOnClick() {

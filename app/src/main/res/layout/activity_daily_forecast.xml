@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="day"
-            type="jakeybakes.com.weather.weather.Day"/>
+            type="jakeybakes.com.weather.weather.Day" />
+
         <variable
             name="pageSummary"
-            type="String"/>
+            type="String" />
     </data>
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/dailyForecastLayout"
         android:layout_width="match_parent"
@@ -23,13 +26,13 @@
             style="@style/dataValue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:paddingEnd="15dp"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
+            android:layout_marginEnd="8dp"
             android:paddingStart="15dp"
+            android:paddingLeft="15dp"
+            android:paddingEnd="15dp"
+            android:paddingRight="15dp"
             android:text="@{pageSummary}"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -141,46 +144,62 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toTopOf="@id/btn_graphs_daily"
+            app:layout_constraintBottom_toTopOf="@id/crdv_dailyForecast_btnGraphs"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dailyForecastTitles" />
 
-        <Button
-            android:id="@+id/btn_graphs_daily"
-            style="@style/optionButtons"
+        <android.support.v7.widget.CardView
+            android:id="@+id/crdv_dailyForecast_btnGraphs"
             android:layout_width="250dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:onClick="fromDailyToDailyGraphs"
-            android:text="@string/daily_data_in_graphs"
-            app:layout_constraintBottom_toTopOf="@id/dailyBtnBack"
+            app:cardCornerRadius="3dp"
+            app:layout_constraintBottom_toTopOf="@id/crdv_dailyForecast_btnBack"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/dailyBtnBack"
-            style="@style/optionButtons"
+            <Button
+                android:id="@+id/btn_graphs_daily"
+                style="@style/optionButtons"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="fromDailyToDailyGraphs"
+                android:text="@string/daily_data_in_graphs" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/crdv_dailyForecast_btnBack"
             android:layout_width="250dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:onClick="fromDailyToMainOnClick"
-            android:text="@string/back_button"
+            app:cardCornerRadius="3dp"
             app:layout_constraintBottom_toTopOf="@id/txtv_dailyForecast_attribution"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/dailyBtnBack"
+                style="@style/optionButtons"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="fromDailyToMainOnClick"
+                android:text="@string/back_button" />
+
+        </android.support.v7.widget.CardView>
 
         <TextView
             android:id="@+id/txtv_dailyForecast_attribution"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/dark_sky_message"
             android:textColor="@color/half_white"
             android:textSize="16sp"

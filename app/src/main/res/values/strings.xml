@@ -67,6 +67,10 @@
     <string name="save">Save</string>
     <string name="edit_name_for_this_location">Edit name for this location</string>
     <string name="home_hint">Home</string>
+    <string name="show_me_the_weather">SHOW ME THE WEATHER</string>
+    <string name="location_with_colon">Location:</string>
+    <string name="longitude_with_colon">Longitude:</string>
+    <string name="latitude_with_colon">Latitude:</string>
     <string-array name="daily_graph_options">
         <item>High Temperature</item>
         <item>Chance of Precipitation</item>

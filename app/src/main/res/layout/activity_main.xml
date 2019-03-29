@@ -258,47 +258,69 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/refresh" />
 
-        <Button
-            android:id="@+id/btn_seeForecast"
-            style="@style/optionButtons"
+        <android.support.v7.widget.CardView
+            android:id="@+id/crdv_seeForecast"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:onClick="hourlyOnClick"
-            android:text="@string/hourly_forecast"
+            app:cardCornerRadius="3dp"
             app:layout_constraintEnd_toStartOf="@+id/guideline6"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtv_uvIndex" />
+            app:layout_constraintTop_toBottomOf="@+id/txtv_uvIndex"  >
+
+        <Button
+            android:id="@+id/btn_seeForecast"
+            style="@style/optionButtons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="hourlyOnClick"
+            android:text="@string/hourly_forecast"/>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/crdv_dailyForecast"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="16dp"
+            app:cardCornerRadius="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline6"
+            app:layout_constraintTop_toTopOf="@+id/crdv_seeForecast" >
 
         <Button
             android:id="@+id/btn_dailyForecast"
             style="@style/optionButtons"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_marginEnd="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:onClick="dailyOnClick"
-            android:text="@string/daily_forecast"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline6"
-            app:layout_constraintTop_toTopOf="@+id/btn_seeForecast" />
+            android:text="@string/daily_forecast" />
 
-        <Button
-            android:id="@+id/btn_location"
-            style="@style/optionButtons"
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/crdv_location"
             android:layout_width="0dp"
             android:layout_height="35dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            android:text="@string/location"
-            android:onClick="locationOnClick"
+            app:cardCornerRadius="3dp"
             app:layout_constraintBottom_toTopOf="@+id/txtv_attribution"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_seeForecast" />
+            app:layout_constraintTop_toBottomOf="@+id/crdv_seeForecast" >
+
+        <Button
+            android:id="@+id/btn_location"
+            style="@style/optionButtons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/location"
+            android:onClick="locationOnClick" />
+
+        </android.support.v7.widget.CardView>
 
         <TextView
             android:id="@+id/txtv_dewpoint_label"

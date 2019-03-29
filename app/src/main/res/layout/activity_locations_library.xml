@@ -80,7 +80,7 @@
             android:onClick="myLocEntryRemove"
             android:includeFontPadding="false"
             android:text="@string/remove"
-            app:layout_constraintBottom_toTopOf="@+id/btn_myLoc_backToMap"
+            app:layout_constraintBottom_toTopOf="@+id/crdv_myLoc_backToMap"
             app:layout_constraintStart_toStartOf="@+id/gdln_myLoc_v50" />
 
         <Button
@@ -97,31 +97,47 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btn_myLoc_backToMap"
-            style="@style/optionButtons"
+        <android.support.v7.widget.CardView
+            android:id="@+id/crdv_myLoc_backToMap"
             android:layout_width="250dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="16dp"
-            android:text="@string/select_location_from_map"
-            app:layout_constraintBottom_toTopOf="@+id/btn_myLoc_backToWeather"
+            app:cardCornerRadius="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/crdv_myLoc_backToWeather"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" >
+
+        <Button
+            android:id="@+id/btn_myLoc_backToMap"
+            style="@style/optionButtons"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/select_location_from_map" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/crdv_myLoc_backToWeather"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btn_myLoc_backToWeather"
             style="@style/optionButtons"
-            android:layout_width="250dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/back_to_current"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/back_to_current" />
+
+        </android.support.v7.widget.CardView>
 
         <android.support.constraint.Guideline
             android:id="@+id/gdln_myLoc_v50"
@@ -139,7 +155,7 @@
             android:includeFontPadding="false"
             android:text="@string/save"
             android:onClick="myLocEntryEditSave"
-            app:layout_constraintBottom_toTopOf="@+id/btn_myLoc_backToMap"
+            app:layout_constraintBottom_toTopOf="@+id/crdv_myLoc_backToMap"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <EditText

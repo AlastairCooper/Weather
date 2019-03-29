@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Latitude:"
+        android:text="@string/latitude_with_colon"
         style="@style/locationValueTitles"
         app:layout_constraintBottom_toTopOf="@+id/txtv_loc_longitudeTitle"
         app:layout_constraintEnd_toStartOf="@+id/gdln_loc_40" />
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Longitude:"
+        android:text="@string/longitude_with_colon"
         style="@style/locationValueTitles"
         app:layout_constraintBottom_toTopOf="@+id/txtv_loc_locationTitle"
         app:layout_constraintEnd_toStartOf="@+id/gdln_loc_40" />
@@ -107,8 +107,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:text="Location:"
-        app:layout_constraintBottom_toTopOf="@id/btn_saveLocationToPreferences"
+        android:text="@string/location_with_colon"
+        app:layout_constraintBottom_toTopOf="@id/crdv_loadMyLocations"
         app:layout_constraintEnd_toStartOf="@id/gdln_loc_40" />
 
     <TextView
@@ -122,45 +122,55 @@
         app:layout_constraintTop_toTopOf="@+id/txtv_loc_locationTitle"
         tools:text="Newcastle-upon-Tyne" />
 
-    <Button
-        android:id="@+id/btn_loadMyLocations"
-        style="@style/optionButtons"
+    <android.support.v7.widget.CardView
+        android:id="@+id/crdv_loadMyLocations"
         android:layout_width="250dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="loadMyLocationsOnClick"
-        android:text="@string/my_locations"
-        app:layout_constraintBottom_toTopOf="@id/btn_showMeTheWeather"
+        app:cardCornerRadius="3dp"
+        app:layout_constraintBottom_toTopOf="@id/crdv_showMeTheWeather"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"   >
+
+    <Button
+        android:id="@+id/btn_loadMyLocations"
+        style="@style/optionButtons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="loadMyLocationsOnClick"
+        android:text="@string/my_locations"/>
 
     <Button
         android:id="@+id/btn_saveLocationToPreferences"
         style="@style/optionButtons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/save_to_my_locations"/>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/crdv_showMeTheWeather"
         android:layout_width="250dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/save_to_my_locations"
-        app:layout_constraintBottom_toTopOf="@id/btn_showMeTheWeather"
+        app:cardCornerRadius="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"   >
 
     <Button
         android:id="@+id/btn_showMeTheWeather"
         style="@style/optionButtons"
-        android:layout_width="250dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="SHOW ME THE WEATHER"
-        android:onClick="showMeTheWeatherOnClick"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/show_me_the_weather"
+        android:onClick="showMeTheWeatherOnClick"/>
+
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>

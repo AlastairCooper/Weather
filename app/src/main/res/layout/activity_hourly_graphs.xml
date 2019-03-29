@@ -81,33 +81,49 @@
         tools:text="The definition should go here and will probably be a couple of lines in length" />
 
 
-    <Button
-        android:id="@+id/btn_hourlyGraphs_goToDaily"
-        style="@style/optionButtons"
+    <android.support.v7.widget.CardView
+        android:id="@+id/crdv_hourlyGraphs_goToDaily"
         android:layout_width="250dp"
         android:layout_height="35dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:onClick="fromHourlyGraphToDailyGraphOnClick"
-        android:text="@string/see_daily_graphs"
-        app:layout_constraintBottom_toTopOf="@id/btn_backFromHourlyGraphsToForecast"
+        app:cardCornerRadius="3dp"
+        app:layout_constraintBottom_toTopOf="@id/crdv_backFromHourlyGraphsToForecast"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"  >
+
+    <Button
+        android:id="@+id/btn_hourlyGraphs_goToDaily"
+        style="@style/optionButtons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="fromHourlyGraphToDailyGraphOnClick"
+        android:text="@string/see_daily_graphs"/>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/crdv_backFromHourlyGraphsToForecast"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="3dp"
+        app:layout_constraintBottom_toTopOf="@id/txtv_hourlyGraphs_attribution"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"  >
 
     <Button
         android:id="@+id/btn_backFromHourlyGraphsToForecast"
         style="@style/optionButtons"
-        android:layout_width="250dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:onClick="fromHourlyGraphsBackToHourlyForecastOnClick"
-        android:text="@string/back_button"
-        app:layout_constraintBottom_toTopOf="@id/txtv_hourlyGraphs_attribution"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="@string/back_button"/>
+
+    </android.support.v7.widget.CardView>
 
     <TextView
         android:id="@+id/txtv_hourlyGraphs_attribution"
